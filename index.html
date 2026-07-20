@@ -29,11 +29,19 @@
 
   .sechead{display:flex; align-items:center; gap:16px; margin:0 0 8px;}
   .secbadge{
-    width:38px; height:38px; border-radius:50%; background:var(--accent); color:#fff;
-    display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; flex-shrink:0;
+    width:52px; height:52px; border-radius:50%; background:#948f80; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:800; flex-shrink:0;
   }
   h2{font-size:28px; font-weight:700; margin:0; letter-spacing:-.01em; color:var(--ink);}
   .secline{height:2px; background:var(--line); margin:14px 0 28px;}
+
+  .headline{
+    background:#fbe4e1; border-radius:12px; padding:20px 24px; margin-top:20px;
+  }
+  .headline .hl-title{font-size:16.5px; font-weight:500; line-height:1.75; margin:0; color:#7a231a;}
+
+  mark.hl{background:#f7d9ae; color:#5c3a12; padding:1px 5px; border-radius:4px; font-weight:700;}
+  mark.hl.red{background:#f4c7c1; color:#7a231a;}
 
   h3{font-size:19px; font-weight:700; margin:0 0 6px;}
   .lede{color:var(--sub); font-size:15px; margin:0 0 26px; max-width:720px;}
@@ -119,19 +127,19 @@
       </div>
       <div class="card monthcard flag">
         <div class="mhead">5월</div>
-        <div class="mtext">쿠시노 수주 급증<br>(프로모션 5/1~25 → 연장)</div>
+        <div class="mtext"><b class="hi">쿠시노 수주 급증</b><br>(프로모션 5/1~25 → 연장)</div>
       </div>
       <div class="card monthcard flag">
         <div class="mhead">6월</div>
-        <div class="mtext">헤이븐&amp;플렉서블 급증<br><b class="hi">쿠시노 SS 장납기(6/12~7/5)</b></div>
+        <div class="mtext"><b class="hi">헤이븐·플렉서블 실적 예측 초과</b><br><b class="hi">쿠시노 SS 장납기(6/12~7/5)</b></div>
       </div>
     </div>
 
     <div class="callout">
-      <b>매출</b> — 4월 과다예측(실적 2,320 &lt; 예상 2,551, −9.1%) → 5월 오차범위 내(2,531 vs 2,617, −3.3%) → 6월 과소예측(2,642 vs 2,348, +12.5%)으로 3개월 내내 방향이 바뀌었습니다.
+      <b>매출</b> — 4월 과다예측(실적 2,320 &lt; 예상 2,551, <mark class="hl red">−9.1%</mark>) → 5월 오차범위 내(2,531 vs 2,617, −3.3%) → 6월 과소예측(2,642 vs 2,348, <mark class="hl red">+12.5%</mark>)으로 3개월 내내 방향이 바뀌었습니다.
     </div>
     <div class="callout warn">
-      <b>재고</b> — 재고회전율이 5월(1.81)·6월(1.75)에 4월(1.23) 대비 크게 높아졌습니다. 스프링 라인 재고가 4월 1,447 → 5월 1,018로 급감한 뒤 6월까지 낮은 수준(1,070)을 유지한 게 주요 원인이며, 재고 확보 여력 축소를 동반했다는 점에서 좋은 신호로만 보기는 어렵습니다.
+      <b>재고</b> — 재고회전율이 5월(<mark class="hl">1.81</mark>)·6월(<mark class="hl">1.75</mark>)에 4월(1.23) 대비 크게 높아졌습니다. 스프링 라인 재고가 4월 1,447 → 5월 1,018로 급감한 뒤 6월까지 낮은 수준(1,070)을 유지한 게 주요 원인이며, 재고 확보 여력 축소를 동반했다는 점에서 좋은 신호로만 보기는 어렵습니다.
     </div>
   </section>
 
@@ -142,49 +150,42 @@
     <p class="lede">브랜드별 예측 정확도와 공급 병목 구간을 나눠서 확인하고, 각 파트가 개선해야 할 포인트를 짚습니다.</p>
 
     <h3 style="margin-top:8px;">매출 — 브랜드별 예측 시점 vs 실적</h3>
-    <div class="grid2" style="margin-top:16px;">
-      <div class="card">
-        <div class="cardtitle">일룸 — 예측 시점별 vs 실적</div>
-        <div class="chartbox"><canvas id="iloomChart"></canvas></div>
+    <div class="card" style="margin-top:16px;">
+      <div class="cardtitle">일룸 · 슬로우베드 — 예측 시점별 vs 실적 (누적)</div>
+      <div class="chartbox" style="height:340px;"><canvas id="brandStackChart"></canvas></div>
+      <div class="legend">
+        <span><span class="sw" style="background:#c23b2b"></span>일룸</span>
+        <span><span class="sw" style="background:#948f80"></span>슬로우베드</span>
       </div>
-      <div class="card">
-        <div class="cardtitle">슬로우베드 — 예측 시점별 vs 실적</div>
-        <div class="chartbox"><canvas id="slowbedChart"></canvas></div>
-      </div>
-    </div>
-    <div class="legend">
-      <span><span class="sw" style="background:var(--d3)"></span>D-3m</span>
-      <span><span class="sw" style="background:var(--d2)"></span>D-2m</span>
-      <span><span class="sw" style="background:var(--d1)"></span>D-1m</span>
-      <span><span class="sw" style="background:var(--act)"></span>실적</span>
-    </div>
-    <div class="callout warn">
-      6월 인밸런스는 <b>일룸이 주도</b>(D-1m 1,703 → 실적 2,024, +18.9%)했고, 슬로우베드는 오히려 D-1m보다 낮게 나왔습니다(645 → 618, −4.2%). 두 브랜드가 반대 방향으로 움직이면서 매트리스 총계만으로는 문제가 상쇄돼 보였습니다.
-    </div>
-    <div class="callout warn">
-      <b>쿠시노 이월 효과</b> — 6/19~25 수주 146건(약 7,700만원)이 매트리스 원단쇼트로 7월 납기로 밀리며 6월 매출인식에서 빠졌습니다. 이월분을 포함하면 <b>6월 쿠시노 실질 수요도 예측 대비 +13.9% 과소예측</b> 상태였습니다 — 6월 오차가 작았던 건 예측이 맞아서가 아니라 매출 인식 시점이 지연된 착시였습니다.
     </div>
 
-    <h3 style="margin-top:36px;">예측-실적 갭 TOP 3 시리즈</h3>
-    <p class="lede" style="margin-top:2px; margin-bottom:16px;">선정 기준: 4~6월 3개월간 <b style="color:var(--ink)">|실적 − 예상(D-1m)|의 절대금액을 3개월 합산</b>한 값이 큰 순서 (오차율이 아닌 금액 기준, 전체 26개 시리즈·일룸/슬로우베드 통합 순위)</p>
-    <div class="toggle" id="seriesToggle">
-      <button class="tbtn active" data-s="haven">헤이븐(매트리스)</button>
-      <button class="tbtn" data-s="flex">플렉서블</button>
-      <button class="tbtn" data-s="kushino">쿠시노</button>
-    </div>
-    <div class="card">
+    <div class="card" style="margin-top:36px;">
+      <div class="cardtitle">예측-실적 갭 TOP 3 시리즈</div>
+      <p class="lede" style="margin-top:0; margin-bottom:16px;">선정 기준: 4~6월 3개월간 <b style="color:var(--ink)">|실적 − 예상(D-1m)|의 절대금액을 3개월 합산</b>한 값이 큰 순서 (오차율이 아닌 금액 기준, 전체 26개 시리즈·일룸/슬로우베드 통합 순위)</p>
+      <div class="toggle" id="seriesToggle">
+        <button class="tbtn active" data-s="haven">헤이븐(매트리스)</button>
+        <button class="tbtn" data-s="flex">플렉서블</button>
+        <button class="tbtn" data-s="kushino">쿠시노</button>
+      </div>
       <div class="chartbox"><canvas id="top3Chart"></canvas></div>
+      <div class="legend">
+        <span><span class="sw" style="background:var(--d3)"></span>D-3m</span>
+        <span><span class="sw" style="background:var(--d2)"></span>D-2m</span>
+        <span><span class="sw" style="background:var(--d1)"></span>D-1m</span>
+        <span><span class="sw line" style="background:var(--act)"></span>실적</span>
+      </div>
     </div>
-    <div class="legend">
-      <span><span class="sw" style="background:var(--d3)"></span>D-3m</span>
-      <span><span class="sw" style="background:var(--d2)"></span>D-2m</span>
-      <span><span class="sw" style="background:var(--d1)"></span>D-1m</span>
-      <span><span class="sw line" style="background:var(--act)"></span>실적</span>
+
+    <div class="callout warn">
+      6월 인밸런스는 <b>일룸이 주도</b>(D-1m 1,703 → 실적 2,024, <mark class="hl red">+18.9%</mark>)했고, 슬로우베드는 오히려 D-1m보다 낮게 나왔습니다(645 → 618, <mark class="hl">−4.2%</mark>). 두 브랜드가 반대 방향으로 움직이면서 매트리스 총계만으로는 문제가 상쇄돼 보였습니다.
+    </div>
+    <div class="callout warn">
+      <b>쿠시노 이월 효과</b> — 6/19~25 수주 <mark class="hl">146건(약 7,700만원)</mark>이 매트리스 원단쇼트로 7월 납기로 밀리며 6월 매출인식에서 빠졌습니다. 이월분을 포함하면 <b>6월 쿠시노 실질 수요도 예측 대비 <mark class="hl red">+13.9%</mark> 과소예측</b> 상태였습니다 — 6월 오차가 작았던 건 예측이 맞아서가 아니라 매출 인식 시점이 지연된 착시였습니다.
     </div>
 
     <div class="callout point">
       <div class="label">개선 포인트 — 매출</div>
-      헤이븐·플렉서블은 3개월 내내 실적이 예측을 상회하는 <b>구조적 편향</b>이라 산식 자체를 재점검해야 하고, 쿠시노는 프로모션 같은 <b>이벤트성 수요</b>가 초기 예측(D-3m)에 거의 반영되지 못한 채 계속 뒤늦게 쫓아가는 패턴입니다. 원인이 다른 만큼 대응도 나눠서 가야 합니다.
+      헤이븐은 4·5월엔 예측이 실적보다 계속 높았다가 <b>6월에만 실적이 예측을 크게 웃돌며 역전</b>된 케이스이고, 플렉서블은 <b>3개월 내내 실적이 예측을 상회</b>하는 구조적 편향입니다. 헤이븐은 6월 수요 급증에 따른 일시적 이슈에, 플렉서블은 산식 자체의 재점검이 필요합니다. 쿠시노는 프로모션 같은 <b>이벤트성 수요</b>가 초기 예측(D-3m)에 거의 반영되지 못한 채 계속 뒤늦게 쫓아가는 패턴입니다. 세 시리즈 모두 원인이 다른 만큼 대응도 나눠서 가야 합니다.
     </div>
 
     <h3 style="margin-top:44px;">공급 — 병목 구간 파악</h3>
@@ -213,7 +214,13 @@
     </table>
 
     <div class="callout warn">
-      순수시간 기준으로는 4→6월 효율이 계속 개선된 것처럼 보이지만(166,725 → 238,416, +43%), <b>가중시간 기준으로는 +18% 상승에 그칩니다.</b> 5월은 순수 근무시간이 가장 적었던 달인데도 가중 배율이 세 달 중 가장 높습니다(+38.7%) — <b>41명 감원 직후인 5월에 이미 특근·가중근무 부담이 급증</b>했고, 이 부담이 6월까지 이어졌습니다.
+      순수시간 기준으로는 4→6월 효율이 계속 개선된 것처럼 보이지만(166,725 → 238,416, +43%), <b>가중시간 기준으로는 <mark class="hl">+18%</mark> 상승에 그칩니다.</b> 5월은 순수 근무시간이 가장 적었던 달인데도 가중 배율이 세 달 중 가장 높습니다(<mark class="hl red">+38.7%</mark>) — <b>41명 감원 직후인 5월에 이미 특근·가중근무 부담이 급증</b>했고, 이 부담이 6월까지 이어졌습니다.
+    </div>
+    <div class="callout warn">
+      <b>쿠시노 원단 수급 차질</b> — 5월 수주 급증분을 상회하는 매출에 대응해 원단 추가 수급이 진행되고 있었으나, <b>담당자의 선적 확인 누락</b>으로 수급이 지연됐습니다. 초기 대응(B2B용 원단 사전 확보)은 유효했지만, 추가 수급 구간에서 확인 프로세스가 개인 확인에만 의존하다 놓친 것으로, 6월 매트리스 장납기의 직접적인 원인 중 하나입니다.
+    </div>
+    <div class="callout warn">
+      <b>세트 품목 리스크 중첩</b> — 매트리스와 함께 배송되는 헤드보드·가드는 매트리스와 <b>공급처가 다른 별개 품목</b>입니다. 5월엔 헤드보드·가드 쪽 공급처의 생산캐파 이슈로 먼저 장납기가 걸렸고, 매트리스는 그 뒤에 묻혀 있다가 6월 원단 수급 차질로 뒤늦게 자체적으로 장납기가 표면화됐습니다. 서로 다른 리스크가 세트 배송 단위로 묶이면서 문제가 이어진 셈입니다.
     </div>
     <div class="callout point">
       <div class="label">개선 포인트 — 공급</div>
@@ -229,7 +236,7 @@
       <div class="card">
         <h3>SALES</h3>
         <ul class="bullets">
-          <li>헤이븐·플렉서블 수요예측 산식 재점검 (3개월 연속 구조적 편향)</li>
+          <li>플렉서블 수요예측 산식 재점검 (3개월 연속 구조적 편향), 헤이븐은 6월 수요 급증 원인 별도 확인</li>
           <li>프로모션 등 이벤트성 수요를 D-3m 초기 예측부터 반영하는 프로세스 마련</li>
           <li>프로모션 연장·기간 조정 등 채널 의사결정의 공급망 적시 공유 체계 보완</li>
         </ul>
@@ -289,21 +296,58 @@ new Chart(document.getElementById('introCombo'), {
   })
 });
 
-// SECTION2: brand vintage charts (실적도 막대, 빨간색)
-function groupedBar(id, d3v, d2v, d1v, act){
-  new Chart(document.getElementById(id), {
-    type:'bar',
-    data:{labels:['4월','5월','6월'],datasets:[
-      {label:'D-3m',data:d3v,backgroundColor:'#cdc9ba'},
-      {label:'D-2m',data:d2v,backgroundColor:'#948f80'},
-      {label:'D-1m',data:d1v,backgroundColor:'#3f3d38'},
-      {label:'실적',data:act,backgroundColor:'#c23b2b'}
-    ]},
-    options: baseOpts()
-  });
-}
-groupedBar('iloomChart', [2049.3,1855.5,1692.4],[1938.4,1778.4,1664.3],[1832.7,1940.2,1703.3],[1541.8,1877.8,2004.7]);
-groupedBar('slowbedChart', [630.1,750.7,765.7],[741.0,721.6,732.9],[697.1,655.7,619.7],[610.1,639.1,588.6]);
+// SECTION2: 일룸+슬로우베드 누적 비교 (단일 그래프, 월 구분 갭+라벨)
+const monthGroupPlugin = {
+  id: 'monthGroupPlugin',
+  afterDraw(chart) {
+    const {ctx, chartArea, scales} = chart;
+    const xScale = scales.x;
+    const groups = [
+      {label:'4월', a:0, b:3},
+      {label:'5월', a:5, b:8},
+      {label:'6월', a:10, b:13}
+    ];
+    ctx.save();
+    ctx.font = '700 14px Pretendard, sans-serif';
+    ctx.fillStyle = '#17171a';
+    ctx.textAlign = 'center';
+    groups.forEach(g => {
+      const xMid = (xScale.getPixelForTick(g.a) + xScale.getPixelForTick(g.b)) / 2;
+      ctx.fillText(g.label, xMid, chartArea.top - 10);
+    });
+    ctx.strokeStyle = '#e2ded2';
+    ctx.lineWidth = 1;
+    [4,9].forEach(gapIdx => {
+      const x = xScale.getPixelForTick(gapIdx);
+      ctx.beginPath();
+      ctx.moveTo(x, chartArea.top);
+      ctx.lineTo(x, chartArea.bottom);
+      ctx.stroke();
+    });
+    ctx.restore();
+  }
+};
+new Chart(document.getElementById('brandStackChart'), {
+  type:'bar',
+  data:{
+    labels:['D-3m','D-2m','D-1m','실적','', 'D-3m','D-2m','D-1m','실적','', 'D-3m','D-2m','D-1m','실적'],
+    datasets:[
+      {label:'일룸', backgroundColor:'#c23b2b', stack:'total',
+       data:[2049.3,1938.4,1832.7,1541.8,null, 1855.5,1778.4,1940.2,1877.8,null, 1692.4,1664.3,1703.3,2004.7]},
+      {label:'슬로우베드', backgroundColor:'#948f80', stack:'total',
+       data:[630.1,741.0,697.1,610.1,null, 750.7,721.6,655.7,639.1,null, 765.7,732.9,619.7,588.6]}
+    ]
+  },
+  options: baseOpts({
+    layout:{padding:{top:26}},
+    plugins:{legend:{display:false}},
+    scales:{
+      y:{grid:{color:gridColor}, ticks:{font:{size:12}}, title:{display:true,text:'백만원',font:{size:12}}},
+      x:{grid:{display:false}, ticks:{font:{size:12}}}
+    }
+  }),
+  plugins:[monthGroupPlugin]
+});
 
 // SECTION2: supply charts
 new Chart(document.getElementById('supplyHeadcount'), {
