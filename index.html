@@ -6,11 +6,12 @@
 <style>
   :root{
     --ink:#17171a; --sub:#54534d; --muted:#8c8a80;
-    --line:#e2ded2; --bg:#faf8f3; --card:#ffffff;
-    --accent:#2f6fa8; --accent2:#2f6fa8;
-    --danger:#c23b2b; --danger-bg:#fdeeec;
-    --point:#eef3f7;
-    --d3:#cdc9ba; --d2:#948f80; --d1:#3f3d38; --act:#c23b2b;
+    --line:#e7e5e0; --bg:#f1f2f5; --card:#ffffff;
+    --accent:#2563eb; --accent2:#2563eb;
+    --purple:#8b5cf6; --orange:#f59e0b; --teal:#10b981;
+    --danger:#ef4444; --danger-bg:#fdeeec;
+    --point:#eef3fb;
+    --d3:#93c5fd; --d2:#3b82f6; --d1:#1d4ed8; --act:#ef4444;
   }
   *{box-sizing:border-box;}
   body{
@@ -29,7 +30,7 @@
 
   .sechead{display:flex; align-items:center; gap:16px; margin:0 0 8px;}
   .secbadge{
-    width:52px; height:52px; border-radius:50%; background:#948f80; color:#fff;
+    width:52px; height:52px; border-radius:50%; background:#2563eb; color:#fff;
     display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:800; flex-shrink:0;
   }
   h2{font-size:28px; font-weight:700; margin:0; letter-spacing:-.01em; color:var(--ink);}
@@ -40,29 +41,44 @@
   }
   .headline .hl-title{font-size:16.5px; font-weight:500; line-height:1.75; margin:0; color:#7a231a;}
 
-  mark.hl{background:#f7d9ae; color:#5c3a12; padding:1px 5px; border-radius:4px; font-weight:700;}
-  mark.hl.red{background:#f4c7c1; color:#7a231a;}
+  
 
   h3{font-size:19px; font-weight:700; margin:0 0 6px;}
   .lede{color:var(--sub); font-size:15px; margin:0 0 26px; max-width:720px;}
 
-  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px 24px; box-shadow:0 1px 3px rgba(20,20,10,.04);}
-  .card.flag{border-color:var(--danger); box-shadow:0 0 0 1.5px var(--danger) inset;}
-  .cardtitle{font-size:15px; font-weight:700; color:var(--ink); margin-bottom:14px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px;}
+  .grid2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px;}
+  .card{background:var(--card); border:none; border-radius:18px; padding:22px 24px; box-shadow:0 2px 14px rgba(30,30,20,.06);}
+  .card.flag{box-shadow:0 2px 14px rgba(30,30,20,.06), 0 0 0 1.5px var(--danger) inset;}
+  .card-header{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:24px; flex-wrap:wrap;}
+  .cardtitle{font-size:15px; font-weight:700; color:var(--ink); margin-bottom:20px;}
   .chartbox{position:relative; height:300px;}
   .chartbox.small{height:220px;}
 
-  .callout{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent2); border-radius:8px; padding:16px 20px; font-size:15px; color:var(--sub); margin-top:18px;}
+  .month-annot{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; padding:0 54px;}
+  .ma-item{font-size:13px; color:var(--sub); line-height:1.7; text-align:center; background:var(--point); border-radius:10px; padding:12px 14px;}
+
+  .kpi-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px;}
+  .kpi-card{background:var(--card); border-radius:16px; padding:18px 20px; box-shadow:0 2px 14px rgba(30,30,20,.06); display:flex; align-items:center; gap:14px;}
+  .kpi-icon{width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:#fff; flex-shrink:0;}
+  .kpi-body{flex:1; min-width:0;}
+  .kpi-label{font-size:12px; color:var(--muted); margin-bottom:2px;}
+  .kpi-value{font-size:21px; font-weight:800; color:var(--ink); letter-spacing:-.01em;}
+  .kpi-badge{display:inline-flex; align-items:center; gap:2px; font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; margin-top:4px;}
+  .kpi-badge.up{background:#fdeeec; color:var(--danger);}
+  .kpi-badge.down{background:#e7f3ec; color:#2f7d54;}
+
+  .callout{background:var(--card); border:none; box-shadow:0 2px 10px rgba(30,30,20,.05); border-left:4px solid var(--accent2); border-radius:12px; padding:16px 20px; font-size:15px; color:var(--sub); margin-top:18px;}
   .callout b{color:var(--ink);}
   .callout.warn{border-left-color:var(--danger);}
-  .callout.point{border-left-color:var(--accent); background:var(--point);}
-  .callout.point .label{font-size:12px; font-weight:700; color:var(--accent); letter-spacing:.04em; margin-bottom:6px; text-transform:uppercase;}
+  .callout.point{border-left-color:var(--orange); background:#fef3e2;}
+  .callout.point .label{font-size:12px; font-weight:700; color:#b45309; letter-spacing:.04em; margin-bottom:6px; text-transform:uppercase;}
   ul.bullets{margin:0; padding-left:20px;}
   ul.bullets li{margin-bottom:8px; font-size:15px;}
 
-  .legend{display:flex; gap:18px; margin-top:12px; font-size:13px; color:var(--sub); flex-wrap:wrap;}
+  .legend{display:flex; gap:14px; margin-top:12px; font-size:13px; color:var(--sub); flex-wrap:wrap;}
+  .card-header .cardtitle{margin-bottom:0;}
+  .card-header .legend{margin-top:0; gap:12px; font-size:12px;}
   .legend span{display:flex; align-items:center; gap:6px;}
   .sw{width:11px; height:11px; border-radius:2px; display:inline-block;}
   .sw.line{width:14px; height:3px; border-radius:0;}
@@ -73,10 +89,30 @@
   .metrictable thead th{color:var(--muted); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.04em;}
   .metrictable td.flag{color:var(--danger); font-weight:700;}
 
+  .detail-table{margin-top:16px;}
+  .detail-table summary{cursor:pointer; font-size:13px; font-weight:700; color:var(--accent); list-style:none; display:inline-flex; align-items:center; gap:6px; user-select:none;}
+  .detail-table summary::-webkit-details-marker{display:none;}
+  .detail-table summary::before{content:"▸"; font-size:12px; transition:transform .15s;}
+  .detail-table[open] summary::before{transform:rotate(90deg);}
+  .detail-table .metrictable{margin-top:12px;}
+
   .concl{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
   .concl .card{border-top:4px solid var(--accent);}
   .concl .card.op{border-top-color:var(--danger);}
   .concl h3{margin-bottom:16px; font-size:20px;}
+
+  .plan-timeline{position:relative; margin-top:8px;}
+  .plan-line{position:relative; height:2px; background:var(--line); margin:0 0 0;}
+  .plan-stops{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; position:relative; margin-top:-1px;}
+  .plan-stop{display:flex; flex-direction:column; align-items:stretch;}
+  .plan-dot{width:14px; height:14px; border-radius:50%; background:var(--ink); margin:0 auto 10px; border:3px solid var(--bg); box-shadow:0 0 0 2px var(--ink);}
+  .plan-time{font-size:14px; font-weight:800; text-align:center; margin-bottom:12px; color:var(--ink);}
+  .plan-card{background:var(--card); border:none; border-radius:14px; padding:14px 14px; flex:1; box-shadow:0 2px 10px rgba(30,30,20,.05);}
+  .plan-action{font-size:13px; line-height:1.6; padding:9px 0; border-bottom:1px solid var(--line);}
+  .plan-action:last-child{border-bottom:none;}
+  .plan-tag{display:inline-block; font-size:10px; font-weight:800; padding:2px 7px; border-radius:4px; margin-bottom:5px; letter-spacing:.03em;}
+  .plan-tag.sales{background:#dce8f2; color:var(--accent2);}
+  .plan-tag.op{background:#f7d9d5; color:var(--danger);}
 
   .monthcards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:20px;}
   .monthcard .mhead{font-size:19px; font-weight:700; color:var(--ink); margin-bottom:10px;}
@@ -86,9 +122,14 @@
   .seriesname{font-size:14px; color:var(--sub); text-align:center; margin-bottom:2px; font-weight:600;}
   .gapval{font-size:12px; color:var(--muted); text-align:center; margin-bottom:10px;}
 
+  .chart-insight{margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);}
+  .chart-insight p{font-size:14px; color:var(--ink); font-weight:500; line-height:1.7; margin:0 0 8px; padding-left:26px; text-indent:-26px;}
+  .chart-insight p:last-child{margin-bottom:0;}
+  .chart-insight .arrow{color:var(--accent); font-weight:900; font-size:15px; margin-right:8px; line-height:1;}
+
   .toggle{display:flex; gap:8px; margin-bottom:18px;}
-  .toggle button{font-size:14px; padding:8px 18px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); color:var(--sub); cursor:pointer; font-weight:600;}
-  .toggle button.active{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .toggle button{font-size:14px; padding:9px 20px; border-radius:999px; border:1.5px solid var(--line); background:var(--card); color:var(--sub); cursor:pointer; font-weight:600;}
+  .toggle button.active{background:var(--accent); color:#fff; border-color:var(--accent); box-shadow:0 2px 8px rgba(47,111,168,.3);}
 </style>
 </head>
 <body>
@@ -105,41 +146,111 @@
     <div class="sechead"><span class="secbadge">1</span><h2>상황 개요</h2></div>
     <div class="secline"></div>
 
-    <div class="card">
-      <div class="cardtitle">매트리스 매출 · 공급 · 재고 흐름</div>
+    <div class="kpi-strip">
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:#2563eb;">매출</div>
+        <div class="kpi-body">
+          <div class="kpi-label">6월 매출실적 (백만원)</div>
+          <div class="kpi-value">2,642</div>
+          <span class="kpi-badge up">▲ 12.5% vs 예측</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:#f59e0b;">공급</div>
+        <div class="kpi-body">
+          <div class="kpi-label">6월 공급실적 (백만원)</div>
+          <div class="kpi-value">2,758</div>
+          <span class="kpi-badge up">▲ 35.7% vs 5월</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:#8b5cf6;">특근</div>
+        <div class="kpi-body">
+          <div class="kpi-label">5월 가중근무 배율</div>
+          <div class="kpi-value">+38.7%</div>
+          <span class="kpi-badge up">▲ 3개월 중 최고</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background:#0d9488;">재고</div>
+        <div class="kpi-body">
+          <div class="kpi-label">6월 재고회전율</div>
+          <div class="kpi-value">1.75</div>
+          <span class="kpi-badge up">▲ 42.3% vs 4월</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <div class="card-header">
+        <div class="cardtitle">매트리스 매출 · 공급 · 재고 흐름</div>
+        <div class="legend">
+          <span><span class="sw" style="background:#2563eb"></span>매출실적</span>
+          <span><span class="sw" style="background:#f59e0b"></span>공급실적</span>
+          <span><span class="sw" style="background:#0d9488"></span>재고-스프링</span>
+          <span><span class="sw" style="background:#2dd4bf"></span>재고-폼</span>
+          <span><span class="sw" style="background:#99f6e4"></span>재고-모션</span>
+          <span><span class="sw" style="background:#d4f7f0"></span>재고-커버</span>
+          <span><span class="sw line" style="background:#8b5cf6"></span>매출예상</span>
+          <span><span class="sw line" style="background:#ef4444"></span>생산인원</span>
+        </div>
+      </div>
       <div class="chartbox"><canvas id="introCombo"></canvas></div>
-      <div class="legend">
-        <span><span class="sw" style="background:#3f3d38"></span>매출실적</span>
-        <span><span class="sw" style="background:#948f80"></span>공급실적</span>
-        <span><span class="sw" style="background:#a89f88"></span>재고-스프링</span>
-        <span><span class="sw" style="background:#c2b9a0"></span>재고-폼</span>
-        <span><span class="sw" style="background:#d8d0bd"></span>재고-모션</span>
-        <span><span class="sw" style="background:#ece7da"></span>재고-커버</span>
-        <span><span class="sw line" style="background:#2f6fa8"></span>매출예상(D-1m)</span>
-        <span><span class="sw line" style="background:#c23b2b"></span>재고회전율(우축)</span>
+      <div class="month-annot">
+        <div class="ma-item">쿠시노 프로모션 품의 승인(중순)<br>4월 말 S&amp;OP 공유</div>
+        <div class="ma-item">쿠시노 수주 급증<br>(프로모션 5/1~25 → 연장)</div>
+        <div class="ma-item">헤이븐·플렉서블 실적 예측 초과<br>쿠시노 SS 장납기(6/12~7/5)</div>
+      </div>
+      <div class="chart-insight">
+        <p><span class="arrow">▶</span>매출은 4월 과다예측(−9.1%) → 5월 오차범위 내 → 6월 과소예측(+12.5%)으로 3개월 내내 방향이 바뀌었습니다.</p>
+        <p><span class="arrow">▶</span>재고회전율은 5월 1.81·6월 1.75로 4월(1.23) 대비 급등 — 스프링 재고 급감(1,447→1,018)이 주요 원인이며, 재고 확보 여력 축소를 동반해 좋은 신호로만 보기는 어렵습니다.</p>
       </div>
     </div>
 
-    <div class="monthcards">
-      <div class="card monthcard">
-        <div class="mhead">4월</div>
-        <div class="mtext">쿠시노 프로모션 품의 승인(중순)<br>4월 말 S&amp;OP 공유</div>
+    <div style="display:grid; grid-template-columns:minmax(0,3fr) minmax(0,2fr); gap:16px; margin-top:16px;">
+      <div class="card">
+        <div class="cardtitle">라인별 일평균 생산수량 (개/일, 막대 위 숫자는 월별 생산품목수)</div>
+        <div class="grid3">
+          <div>
+            <div class="seriesname">스프링 (캐파 250/일)</div>
+            <div class="chartbox small"><canvas id="capSpring"></canvas></div>
+          </div>
+          <div>
+            <div class="seriesname">폼 (캐파 120/일)</div>
+            <div class="chartbox small"><canvas id="capFoam"></canvas></div>
+          </div>
+          <div>
+            <div class="seriesname">모션 (캐파 8/일)</div>
+            <div class="chartbox small"><canvas id="capMotion"></canvas></div>
+          </div>
+        </div>
+        <div class="chart-insight">
+          <p><span class="arrow">▶</span>스프링·폼은 3개월 내내 캐파 미달(6월 기준 스프링 233/250, 폼 95/120)인데, 모션만 유일하게 캐파를 채우거나 초과했습니다.</p>
+        </div>
       </div>
-      <div class="card monthcard flag">
-        <div class="mhead">5월</div>
-        <div class="mtext"><b class="hi">쿠시노 수주 급증</b><br>(프로모션 5/1~25 → 연장)</div>
-      </div>
-      <div class="card monthcard flag">
-        <div class="mhead">6월</div>
-        <div class="mtext"><b class="hi">헤이븐·플렉서블 실적 예측 초과</b><br><b class="hi">쿠시노 SS 장납기(6/12~7/5)</b></div>
+
+      <div class="card">
+        <div class="cardtitle">근무시간 — 순수 vs 가중</div>
+        <div class="seriesname" style="text-align:center;">
+          <span class="legend" style="justify-content:center; margin-top:0; display:inline-flex;">
+            <span><span class="sw" style="background:#93c5fd"></span>순수시간</span>
+            <span><span class="sw" style="background:#ef4444"></span>가중시간</span>
+          </span>
+        </div>
+        <div class="chartbox small"><canvas id="hoursChartTop"></canvas></div>
+        <div class="chart-insight">
+          <p><span class="arrow">▶</span>5월은 순수시간이 가장 적었는데 가중 배율은 가장 높음(+38.7%) — 특근 부담은 5월 인원감축 직후 이미 시작됐습니다.</p>
+        </div>
       </div>
     </div>
 
-    <div class="callout">
-      <b>매출</b> — 4월 과다예측(실적 2,320 &lt; 예상 2,551, <mark class="hl red">−9.1%</mark>) → 5월 오차범위 내(2,531 vs 2,617, −3.3%) → 6월 과소예측(2,642 vs 2,348, <mark class="hl red">+12.5%</mark>)으로 3개월 내내 방향이 바뀌었습니다.
-    </div>
-    <div class="callout warn">
-      <b>재고</b> — 재고회전율이 5월(<mark class="hl">1.81</mark>)·6월(<mark class="hl">1.75</mark>)에 4월(1.23) 대비 크게 높아졌습니다. 스프링 라인 재고가 4월 1,447 → 5월 1,018로 급감한 뒤 6월까지 낮은 수준(1,070)을 유지한 게 주요 원인이며, 재고 확보 여력 축소를 동반했다는 점에서 좋은 신호로만 보기는 어렵습니다.
+    <div class="callout point">
+      <div class="label">이번 분석에서 확인할 지점</div>
+      매출은 6월 들어 예측을 웃돌았고, 생산인원은 5월부터 41명으로 줄어 있었습니다. 그런데 라인별 생산수량은 캐파 안에서 운영됐는데도 특근(가중근무)은 3개월 중 가장 크게 늘었습니다 — 겉보기엔 서로 맞지 않는 이 현상들이 어디서 비롯됐는지, 아래의 질문들로 짚어봅니다.
+      <ul class="bullets" style="margin-top:10px;">
+        <li>매출예측은 필요한 시점에 정확한 정보를 전달했는가</li>
+        <li>특근은 늘었는데 산출이 캐파 밑에 머문 비효율은 어디서 비롯됐고, 그 바탕이 된 생산인원·캐파 운영 판단은 합리적이었는가</li>
+      </ul>
     </div>
   </section>
 
@@ -151,80 +262,128 @@
 
     <h3 style="margin-top:8px;">매출 — 브랜드별 예측 시점 vs 실적</h3>
     <div class="card" style="margin-top:16px;">
-      <div class="cardtitle">일룸 · 슬로우베드 — 예측 시점별 vs 실적 (누적)</div>
+      <div class="card-header">
+        <div class="cardtitle">일룸 · 슬로우베드 — 예측 시점별 vs 실적 (누적)</div>
+        <div class="legend">
+          <span><span class="sw" style="background:#ef4444"></span>일룸</span>
+          <span><span class="sw" style="background:#2563eb"></span>슬로우베드</span>
+        </div>
+      </div>
       <div class="chartbox" style="height:340px;"><canvas id="brandStackChart"></canvas></div>
-      <div class="legend">
-        <span><span class="sw" style="background:#c23b2b"></span>일룸</span>
-        <span><span class="sw" style="background:#948f80"></span>슬로우베드</span>
+      <div class="chart-insight">
+        <p><span class="arrow">▶</span>실적은 4월엔 예측 시점(D-3m~D-1m) 전부보다 낮았고, 5월엔 예측 범위 안, 6월엔 예측을 모두 웃돌았습니다 — 이 6월 이탈은 <b style="color:var(--ink)">일룸이 주도</b>했습니다(D-1m 대비 +18.9%). 슬로우베드는 오히려 D-1m보다 낮게 나와(−4.2%) 매트리스 총계만 보면 문제가 상쇄돼 보였습니다.</p>
       </div>
     </div>
 
     <div class="card" style="margin-top:36px;">
-      <div class="cardtitle">예측-실적 갭 TOP 3 시리즈</div>
-      <p class="lede" style="margin-top:0; margin-bottom:16px;">선정 기준: 4~6월 3개월간 <b style="color:var(--ink)">|실적 − 예상(D-1m)|의 절대금액을 3개월 합산</b>한 값이 큰 순서 (오차율이 아닌 금액 기준, 전체 26개 시리즈·일룸/슬로우베드 통합 순위)</p>
+      <div class="card-header">
+        <div class="cardtitle">예측-실적 갭 TOP 3 시리즈</div>
+        <div class="legend">
+          <span><span class="sw" style="background:var(--d3)"></span>D-3m</span>
+          <span><span class="sw" style="background:var(--d2)"></span>D-2m</span>
+          <span><span class="sw" style="background:var(--d1)"></span>D-1m</span>
+          <span><span class="sw line" style="background:var(--act)"></span>실적</span>
+        </div>
+      </div>
+      <p class="lede" style="margin-top:0; margin-bottom:16px; max-width:none;">선정 기준: 4~6월 3개월간 <b style="color:var(--ink)">|실적 − 예상(D-3m~D-1m 평균)|의 절대금액을 3개월 합산</b>한 값이 큰 순서<br>(D-1m 한 시점이 아닌 예측 구간 전체의 정확도 기준, 전체 26개 시리즈·일룸/슬로우베드 통합 순위)</p>
       <div class="toggle" id="seriesToggle">
         <button class="tbtn active" data-s="haven">헤이븐(매트리스)</button>
-        <button class="tbtn" data-s="flex">플렉서블</button>
         <button class="tbtn" data-s="kushino">쿠시노</button>
+        <button class="tbtn" data-s="flex">플렉서블</button>
       </div>
       <div class="chartbox"><canvas id="top3Chart"></canvas></div>
-      <div class="legend">
-        <span><span class="sw" style="background:var(--d3)"></span>D-3m</span>
-        <span><span class="sw" style="background:var(--d2)"></span>D-2m</span>
-        <span><span class="sw" style="background:var(--d1)"></span>D-1m</span>
-        <span><span class="sw line" style="background:var(--act)"></span>실적</span>
+      <div class="chart-insight">
+        <p><span class="arrow">▶</span>헤이븐·플렉서블은 이벤트성 수요(프로모션)가 예측에 반영되지 못한 패턴입니다 — 헤이븐은 6월 한 달만 역전, 플렉서블은 6월까지 진행된 프로모션이 반영되지 않아 3개월 내내 실적이 예측을 상회했습니다.</p>
+        <p><span class="arrow">▶</span>쿠시노는 D-3m 초기 예측이 실적의 절반에도 못 미쳤다가 D-1m에야 따라잡았고, 6월도 원단쇼트로 밀린 이월분(146건·7,700만원)을 포함하면 여전히 +13.9% 과소예측이었습니다.</p>
       </div>
-    </div>
-
-    <div class="callout warn">
-      6월 인밸런스는 <b>일룸이 주도</b>(D-1m 1,703 → 실적 2,024, <mark class="hl red">+18.9%</mark>)했고, 슬로우베드는 오히려 D-1m보다 낮게 나왔습니다(645 → 618, <mark class="hl">−4.2%</mark>). 두 브랜드가 반대 방향으로 움직이면서 매트리스 총계만으로는 문제가 상쇄돼 보였습니다.
-    </div>
-    <div class="callout warn">
-      <b>쿠시노 이월 효과</b> — 6/19~25 수주 <mark class="hl">146건(약 7,700만원)</mark>이 매트리스 원단쇼트로 7월 납기로 밀리며 6월 매출인식에서 빠졌습니다. 이월분을 포함하면 <b>6월 쿠시노 실질 수요도 예측 대비 <mark class="hl red">+13.9%</mark> 과소예측</b> 상태였습니다 — 6월 오차가 작았던 건 예측이 맞아서가 아니라 매출 인식 시점이 지연된 착시였습니다.
     </div>
 
     <div class="callout point">
       <div class="label">개선 포인트 — 매출</div>
-      헤이븐은 4·5월엔 예측이 실적보다 계속 높았다가 <b>6월에만 실적이 예측을 크게 웃돌며 역전</b>된 케이스이고, 플렉서블은 <b>3개월 내내 실적이 예측을 상회</b>하는 구조적 편향입니다. 헤이븐은 6월 수요 급증에 따른 일시적 이슈에, 플렉서블은 산식 자체의 재점검이 필요합니다. 쿠시노는 프로모션 같은 <b>이벤트성 수요</b>가 초기 예측(D-3m)에 거의 반영되지 못한 채 계속 뒤늦게 쫓아가는 패턴입니다. 세 시리즈 모두 원인이 다른 만큼 대응도 나눠서 가야 합니다.
+      헤이븐·플렉서블·쿠시노 모두 프로모션 등 이벤트성 수요가 예측에 정교하게 반영되지 못한 공통 패턴입니다. 초기 예측(D-3m) 단계부터 이벤트성 수요를 반영할 수 있는 프로세스 정비가 필요합니다.
     </div>
 
     <h3 style="margin-top:44px;">공급 — 병목 구간 파악</h3>
     <div class="grid2" style="margin-top:16px;">
       <div class="card">
-        <div class="cardtitle">공급실적 · 생산인원</div>
-        <div class="chartbox"><canvas id="supplyHeadcount"></canvas></div>
+        <div class="card-header">
+          <div class="cardtitle">생산인원 · 근무시간</div>
+          <div class="legend">
+            <span><span class="sw" style="background:#93c5fd"></span>순수시간</span>
+            <span><span class="sw" style="background:#ef4444"></span>가중시간</span>
+            <span><span class="sw line" style="background:#8b5cf6"></span>생산인원</span>
+          </div>
+        </div>
+        <div class="chartbox"><canvas id="headcountHoursChart"></canvas></div>
+        <div class="chart-insight">
+          <p><span class="arrow">▶</span>생산인원은 5월부터 41명으로 줄었는데, 가중근무시간은 오히려 5월부터 높은 수준을 유지했습니다 — 병목은 6월이 아니라 5월 인원조정 시점부터 시작됐습니다.</p>
+        </div>
       </div>
       <div class="card">
-        <div class="cardtitle">근무시간 — 순수 vs 가중</div>
-        <div class="chartbox"><canvas id="hoursChart"></canvas></div>
+        <div class="card-header">
+          <div class="cardtitle">공급실적 · 특근 부담</div>
+          <div class="legend">
+            <span><span class="sw" style="background:#f59e0b"></span>공급실적</span>
+            <span><span class="sw line" style="background:#ef4444"></span>가중배율</span>
+          </div>
+        </div>
+        <div class="chartbox"><canvas id="supplyBurdenChart"></canvas></div>
+        <div class="chart-insight">
+          <p><span class="arrow">▶</span>6월 공급실적은 +35.7% 급증했지만, 특근 부담(가중배율)이 가장 컸던 달은 오히려 5월(+38.7%)이었습니다 — 공급량과 특근 부담의 타이밍이 서로 어긋납니다.</p>
+        </div>
       </div>
     </div>
 
-    <table class="metrictable">
-      <thead><tr><th></th><th>4월</th><th>5월</th><th>6월</th></tr></thead>
-      <tbody>
-        <tr><td>공급실적</td><td>2,399</td><td>2,033</td><td class="flag">2,758</td></tr>
-        <tr><td>생산인원</td><td>44명</td><td class="flag">41명</td><td>41명</td></tr>
-        <tr><td>근무시간(순수)</td><td>14,389</td><td>9,158</td><td>11,568</td></tr>
-        <tr><td>근무시간(가중)</td><td>15,588</td><td>12,701</td><td>15,176</td></tr>
-        <tr><td>가중/순수 배율</td><td>+8.3%</td><td class="flag">+38.7%</td><td>+31.2%</td></tr>
-        <tr><td>시간당생산액(순수)</td><td>166,725</td><td>221,992</td><td>238,416</td></tr>
-        <tr><td>시간당생산액(가중)</td><td>153,900</td><td>160,066</td><td>181,734</td></tr>
-      </tbody>
-    </table>
+    <details class="detail-table">
+      <summary>상세 수치 표로 보기</summary>
+      <table class="metrictable">
+        <thead><tr><th></th><th>4월</th><th>5월</th><th>6월</th></tr></thead>
+        <tbody>
+          <tr><td>공급실적</td><td>2,399</td><td>2,033</td><td class="flag">2,758</td></tr>
+          <tr><td>생산인원</td><td>44명</td><td class="flag">41명</td><td>41명</td></tr>
+          <tr><td>근무시간(순수)</td><td>14,389</td><td>9,158</td><td>11,568</td></tr>
+          <tr><td>근무시간(가중)</td><td>15,588</td><td>12,701</td><td>15,176</td></tr>
+          <tr><td>가중/순수 배율</td><td>+8.3%</td><td class="flag">+38.7%</td><td>+31.2%</td></tr>
+          <tr><td>시간당생산액(순수)</td><td>166,725</td><td>221,992</td><td>238,416</td></tr>
+          <tr><td>시간당생산액(가중)</td><td>153,900</td><td>160,066</td><td>181,734</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <h3 style="margin-top:36px;">라인별 수량 — 특근이 산출로 이어졌는가</h3>
+    <p class="lede" style="margin-top:2px; max-width:none;">특근이 실제로 생산량을 늘렸는지 확인하기 위해 <b style="color:var(--ink)">"특근을 전혀 안 했다면 나왔을 산출량"</b>을 계산해 실제 산출량, 캐파와 나란히 비교했습니다 (6월 기준).</p>
+    <div class="card">
+      <div class="grid3">
+        <div>
+          <div class="seriesname">스프링</div>
+          <div class="chartbox small"><canvas id="otSpring"></canvas></div>
+        </div>
+        <div>
+          <div class="seriesname">폼</div>
+          <div class="chartbox small"><canvas id="otFoam"></canvas></div>
+        </div>
+        <div>
+          <div class="seriesname">모션</div>
+          <div class="chartbox small"><canvas id="otMotion"></canvas></div>
+        </div>
+      </div>
+      <div class="legend" style="justify-content:center;">
+        <span><span class="sw" style="background:#cdd3db"></span>캐파</span>
+        <span><span class="sw" style="background:#0d9488"></span>특근 없었다면 예상치</span>
+        <span><span class="sw" style="background:#ef4444"></span>실제 산출</span>
+      </div>
+      <div class="chart-insight">
+        <p><span class="arrow">▶</span>특근이 효과가 있었다면 "실제 산출" 막대가 "특근 없었다면" 막대보다 뚜렷하게 높아야 합니다. 그런데 스프링은 두 막대가 233으로 똑같고, 폼은 실제(95)가 오히려 더 낮습니다(111.8) — <b style="color:var(--ink)">특근으로 늘린 노동시간이 완성품으로 전혀 바뀌지 못했다</b>는 뜻입니다. (품목을 자주 바꿔 시간을 썼다면 SKU당 생산량이 줄어야 하는데 스프링은 4월 47개→6월 60개로 오히려 늘어, 품목 전환 때문은 아닙니다.)</p>
+        <p><span class="arrow">▶</span>사람이 부족해서가 아니라 자재 부족, 불량 재작업, 설비 다운타임, 인력 숙련도 희석 등의 요인이 작용한 정황으로 판단할 수 있습니다.</p>
+      </div>
+    </div>
 
     <div class="callout warn">
-      순수시간 기준으로는 4→6월 효율이 계속 개선된 것처럼 보이지만(166,725 → 238,416, +43%), <b>가중시간 기준으로는 <mark class="hl">+18%</mark> 상승에 그칩니다.</b> 5월은 순수 근무시간이 가장 적었던 달인데도 가중 배율이 세 달 중 가장 높습니다(<mark class="hl red">+38.7%</mark>) — <b>41명 감원 직후인 5월에 이미 특근·가중근무 부담이 급증</b>했고, 이 부담이 6월까지 이어졌습니다.
-    </div>
-    <div class="callout warn">
-      <b>쿠시노 원단 수급 차질</b> — 5월 수주 급증분을 상회하는 매출에 대응해 원단 추가 수급이 진행되고 있었으나, <b>담당자의 선적 확인 누락</b>으로 수급이 지연됐습니다. 초기 대응(B2B용 원단 사전 확보)은 유효했지만, 추가 수급 구간에서 확인 프로세스가 개인 확인에만 의존하다 놓친 것으로, 6월 매트리스 장납기의 직접적인 원인 중 하나입니다.
-    </div>
-    <div class="callout warn">
-      <b>세트 품목 리스크 중첩</b> — 매트리스와 함께 배송되는 헤드보드·가드는 매트리스와 <b>공급처가 다른 별개 품목</b>입니다. 5월엔 헤드보드·가드 쪽 공급처의 생산캐파 이슈로 먼저 장납기가 걸렸고, 매트리스는 그 뒤에 묻혀 있다가 6월 원단 수급 차질로 뒤늦게 자체적으로 장납기가 표면화됐습니다. 서로 다른 리스크가 세트 배송 단위로 묶이면서 문제가 이어진 셈입니다.
+      자재 요인은 <b>쿠시노 매트리스 장납기 이슈(6/12~7/5, D+10)</b>를 통해 실제로 확인되었습니다 — 5월 수주 급증에 대응하며 원단을 선제적으로 많이 소진했고, 그 여파로 6월엔 추가 수요에 대응할 원단을 긴급 수급하는 데 한계가 있었습니다. 초기 대응(B2B용 원단 사전 확보)은 유효했지만 5월 소진분을 메우는 속도가 6월 수요를 못 따라갔습니다. 여기에 <b>공급처가 다른 별개 품목</b>인 헤드보드·가드가 생산캐파 이슈로 먼저 장납기가 걸리며 매트리스 문제가 그 뒤에 가려져 있다가, 6월 원단 수급 차질로 매트리스 자체 장납기가 뒤늦게 표면화되는 시간차까지 겹쳤습니다.
     </div>
     <div class="callout point">
       <div class="label">개선 포인트 — 공급</div>
-      병목은 6월 한 달이 아니라 <b>5월 인원 조정 시점부터</b> 시작됐습니다. 인원 감축 판단을 D-1m 총량 예측만으로 하지 않고, 가중 캐파 여력까지 함께 봐야 하며, 원단 등 자재 추가 수급 확인 프로세스와 세트 품목의 공급처별 리스크 관리도 함께 보완해야 합니다.
+      인원 감축 판단을 D-1m 총량 예측만으로 하지 않고 가중 캐파 여력까지 함께 봐야 하며, <b>특근이 실제 산출로 이어지는지 라인별 수량 기준으로 상시 점검</b>하고, 원단 등 주요 자재의 재고 소진 속도와 긴급 수급 리드타임을 함께 관리해야 합니다.
     </div>
   </section>
 
@@ -232,22 +391,72 @@
   <section style="margin-bottom:20px;">
     <div class="sechead"><span class="secbadge">3</span><h2>개선 방향</h2></div>
     <div class="secline"></div>
-    <div class="concl">
-      <div class="card">
-        <h3>SALES</h3>
-        <ul class="bullets">
-          <li>플렉서블 수요예측 산식 재점검 (3개월 연속 구조적 편향), 헤이븐은 6월 수요 급증 원인 별도 확인</li>
-          <li>프로모션 등 이벤트성 수요를 D-3m 초기 예측부터 반영하는 프로세스 마련</li>
-          <li>프로모션 연장·기간 조정 등 채널 의사결정의 공급망 적시 공유 체계 보완</li>
-        </ul>
-      </div>
-      <div class="card op">
-        <h3>OPERATION</h3>
-        <ul class="bullets">
-          <li>인원 조정 시 D-1m 총량 예측 + 가중 캐파 여력을 함께 검토하는 기준 마련</li>
-          <li>자재 추가 수급 진행 중 선적 확인 프로세스 보완 (담당자 개인 확인 의존도 축소)</li>
-          <li>세트 판매 품목의 공급처별 리스크 분리 모니터링 체계 도입</li>
-        </ul>
+    <p class="lede">언제, 누가, 무엇을 하는지를 예측 주기(D-3m~D-1m)에 맞춰 정리했습니다.</p>
+
+    <div class="plan-timeline">
+      <div class="plan-line"></div>
+      <div class="plan-stops">
+
+        <div class="plan-stop">
+          <div class="plan-dot"></div>
+          <div class="plan-time">D-3개월</div>
+          <div class="plan-card">
+            <div class="plan-action">
+              <span class="plan-tag sales">SALES</span><br>
+              프로모션·이벤트 일정 확정 시 영업일 3일 이내 SCM 공유 의무화 (4/29 쿠시노 공유가 프로모션 2일 전이라 사실상 대응 불가했던 사례 재발 방지)
+            </div>
+            <div class="plan-action">
+              <span class="plan-tag op">OPERATION</span><br>
+              직전 분기 구조적 편향 시리즈(플렉서블 등) 수요예측 산식 보정 착수
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-stop">
+          <div class="plan-dot"></div>
+          <div class="plan-time">D-2개월</div>
+          <div class="plan-card">
+            <div class="plan-action">
+              <span class="plan-tag sales">SALES</span><br>
+              D-3m 대비 D-2m 예측 갭 1차 점검, 이벤트성 수요 반영 여부 확인
+            </div>
+            <div class="plan-action">
+              <span class="plan-tag op">OPERATION</span><br>
+              다음 달 캐파 시나리오(정상/성수기) 초안 수립
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-stop">
+          <div class="plan-dot"></div>
+          <div class="plan-time">D-1개월</div>
+          <div class="plan-card">
+            <div class="plan-action">
+              <span class="plan-tag op">OPERATION</span><br>
+              인원 조정안 확정 — D-1m 총량예측 + 가중근무 배율을 함께 검토 (가중배율 기준선 초과 시 인원 유지)
+            </div>
+            <div class="plan-action">
+              <span class="plan-tag sales">SALES</span><br>
+              D-1m 확정 예측 공유, 갭 TOP3 시리즈는 별도 브리핑
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-stop">
+          <div class="plan-dot"></div>
+          <div class="plan-time">월중 상시</div>
+          <div class="plan-card">
+            <div class="plan-action">
+              <span class="plan-tag sales">SALES</span> <span class="plan-tag op">OPERATION</span><br>
+              실적-예측 갭 주간 모니터링, 기준선 초과 시 즉시 에스컬레이션
+            </div>
+            <div class="plan-action">
+              <span class="plan-tag op">OPERATION</span><br>
+              세트 판매 품목(매트리스+헤드보드/가드) 공급처별 리드타임 점검
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -273,27 +482,128 @@ function baseOpts(extra){
 }
 
 // SECTION1: combined 매출/공급/재고 chart
+const alignedLinesPlugin = {
+  id:'alignedLines',
+  afterDatasetsDraw(chart){
+    const {ctx, scales} = chart;
+    const salesMeta = chart.getDatasetMeta(0);   // 매출실적 bar 위치
+    const supplyMeta = chart.getDatasetMeta(1);  // 공급실적 bar 위치
+    function drawLine(meta, values, scale, color, dashed, pr){
+      const pts = meta.data.map((bar,i) => ({x:bar.x, y:scale.getPixelForValue(values[i])}));
+      ctx.save();
+      ctx.strokeStyle = color; ctx.fillStyle = color;
+      ctx.lineWidth = dashed ? 2.5 : 3;
+      ctx.setLineDash(dashed ? [5,3] : []);
+      ctx.beginPath();
+      pts.forEach((p,i)=> i===0 ? ctx.moveTo(p.x,p.y) : ctx.lineTo(p.x,p.y));
+      ctx.stroke();
+      ctx.setLineDash([]);
+      pts.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,pr,0,Math.PI*2); ctx.fill(); });
+      ctx.restore();
+    }
+    drawLine(salesMeta, [2551,2617,2348], scales.y, '#8b5cf6', true, 5);
+    drawLine(supplyMeta, [44,41,41], scales.y1, '#ef4444', false, 6);
+  }
+};
 new Chart(document.getElementById('introCombo'), {
   data:{
     labels:['4월','5월','6월'],
     datasets:[
-      {type:'bar', label:'매출실적', data:[2320,2531,2642], backgroundColor:'#3f3d38', order:2, stack:'sales', yAxisID:'y'},
-      {type:'bar', label:'공급실적', data:[2399,2033,2758], backgroundColor:'#948f80', order:2, stack:'supply', yAxisID:'y'},
-      {type:'bar', label:'재고-스프링', data:[1447,1018,1070], backgroundColor:'#a89f88', order:2, stack:'inv', yAxisID:'y'},
-      {type:'bar', label:'재고-폼', data:[316,243,277], backgroundColor:'#c2b9a0', order:2, stack:'inv', yAxisID:'y'},
-      {type:'bar', label:'재고-모션', data:[68,91,108], backgroundColor:'#d8d0bd', order:2, stack:'inv', yAxisID:'y'},
-      {type:'bar', label:'재고-커버', data:[35,30,39], backgroundColor:'#ece7da', order:2, stack:'inv', yAxisID:'y'},
-      {type:'line', label:'매출예상(D-1m)', data:[2551,2617,2348], borderColor:'#2f6fa8', backgroundColor:'#2f6fa8', borderDash:[5,3], tension:.3, pointRadius:5, borderWidth:2.5, order:0, yAxisID:'y'},
-      {type:'line', label:'재고회전율', data:[1.23,1.81,1.75], borderColor:'#c23b2b', backgroundColor:'#c23b2b', tension:.3, pointRadius:6, borderWidth:3, order:0, yAxisID:'y1'}
+      {type:'bar', label:'매출실적', data:[2320,2531,2642], backgroundColor:'#2563eb', order:2, stack:'sales', yAxisID:'y'},
+      {type:'bar', label:'공급실적', data:[2399,2033,2758], backgroundColor:'#f59e0b', order:2, stack:'supply', yAxisID:'y'},
+      {type:'bar', label:'재고-스프링', data:[1447,1018,1070], backgroundColor:'#0d9488', order:2, stack:'inv', yAxisID:'y'},
+      {type:'bar', label:'재고-폼', data:[316,243,277], backgroundColor:'#2dd4bf', order:2, stack:'inv', yAxisID:'y'},
+      {type:'bar', label:'재고-모션', data:[68,91,108], backgroundColor:'#99f6e4', order:2, stack:'inv', yAxisID:'y'},
+      {type:'bar', label:'재고-커버', data:[35,30,39], backgroundColor:'#d4f7f0', order:2, stack:'inv', yAxisID:'y'},
+      {type:'line', label:'매출예상(D-1m)', data:[2551,2617,2348], borderWidth:0, pointRadius:0, pointHoverRadius:0, backgroundColor:'transparent', borderColor:'transparent', order:0, yAxisID:'y'},
+      {type:'line', label:'생산인원', data:[44,41,41], borderWidth:0, pointRadius:0, pointHoverRadius:0, backgroundColor:'transparent', borderColor:'transparent', order:0, yAxisID:'y1'}
     ]
   },
   options: baseOpts({
     scales:{
       y:{grid:{color:gridColor}, ticks:{font:{size:12}}, position:'left', title:{display:true,text:'백만원',font:{size:12}}},
-      y1:{grid:{display:false}, ticks:{font:{size:12}}, position:'right', min:0, max:2.5, title:{display:true,text:'재고회전율',font:{size:12}}},
+      y1:{grid:{display:false}, ticks:{font:{size:12}}, position:'right', min:35, max:48, title:{display:true,text:'생산인원(명)',font:{size:12}}},
       x:{grid:{display:false}, ticks:{font:{size:13}}}
     }
-  })
+  }),
+  plugins:[alignedLinesPlugin]
+});
+
+// SECTION1: 라인별 일평균 생산수량 (막대 끝에 월별 생산품목수 표시)
+const skuLabelPlugin = {
+  id:'skuLabels',
+  afterDatasetsDraw(chart){
+    const opts = chart.config.options.plugins.skuLabels;
+    if(!opts || !opts.data) return;
+    const meta = chart.getDatasetMeta(0);
+    const {ctx} = chart;
+    ctx.save();
+    ctx.font = '700 11px Pretendard, sans-serif';
+    ctx.fillStyle = '#54534d';
+    ctx.textAlign = 'center';
+    meta.data.forEach((bar, i) => {
+      ctx.fillText(opts.data[i] + '종', bar.x, bar.y - 8);
+    });
+    ctx.restore();
+  }
+};
+function capChart(id, actual, skuCounts){
+  new Chart(document.getElementById(id), {
+    type:'bar',
+    data:{
+      labels:['4월','5월','6월'],
+      datasets:[
+        {label:'실제', data:actual, backgroundColor:'#93c5fd', borderRadius:3}
+      ]
+    },
+    options: baseOpts({
+      layout:{padding:{top:20}},
+      plugins:{legend:{display:false}, skuLabels:{data:skuCounts}}
+    }),
+    plugins:[skuLabelPlugin]
+  });
+}
+capChart('capSpring', [203,211,233], [95,75,82]);
+capChart('capFoam', [78,93,95], [26,22,31]);
+capChart('capMotion', [8,8,9], [14,12,15]);
+
+// SECTION2: 특근이 산출로 이어졌는가 - 캐파/무특근예상/실제 비교
+const otValuePlugin = {
+  id:'otValue',
+  afterDatasetsDraw(chart){
+    const {ctx} = chart;
+    const meta = chart.getDatasetMeta(0);
+    const data = chart.data.datasets[0].data;
+    ctx.save();
+    ctx.font = '700 12px Pretendard, sans-serif';
+    ctx.fillStyle = '#3f3d38';
+    ctx.textAlign = 'center';
+    meta.data.forEach((bar,i) => ctx.fillText(data[i], bar.x, bar.y - 8));
+    ctx.restore();
+  }
+};
+function otChart(id, cap, expected, actual, actualColor){
+  new Chart(document.getElementById(id), {
+    type:'bar',
+    data:{
+      labels:['캐파',['특근','없었다면'],['실제','산출']],
+      datasets:[{ data:[cap, expected, actual], backgroundColor:['#cdd3db','#0d9488', actualColor], borderRadius:4 }]
+    },
+    options: baseOpts({ layout:{padding:{top:20}}, plugins:{legend:{display:false}} }),
+    plugins:[otValuePlugin]
+  });
+}
+otChart('otSpring', 250, 233.0, 233, '#ef4444');
+otChart('otFoam', 120, 111.8, 95, '#ef4444');
+otChart('otMotion', 8, 7.5, 9, '#2563eb');
+
+new Chart(document.getElementById('hoursChartTop'), {
+  type:'bar',
+  data:{labels:['4월','5월','6월'],datasets:[
+    {label:'순수시간',data:[14389,9158,11568],backgroundColor:'#93c5fd',borderRadius:4},
+    {label:'가중시간',data:[15588,12701,15176],backgroundColor:'#ef4444',borderRadius:4}
+  ]},
+  options: baseOpts({ plugins:{legend:{display:false}} })
 });
 
 // SECTION2: 일룸+슬로우베드 누적 비교 (단일 그래프, 월 구분 갭+라벨)
@@ -332,9 +642,9 @@ new Chart(document.getElementById('brandStackChart'), {
   data:{
     labels:['D-3m','D-2m','D-1m','실적','', 'D-3m','D-2m','D-1m','실적','', 'D-3m','D-2m','D-1m','실적'],
     datasets:[
-      {label:'일룸', backgroundColor:'#c23b2b', stack:'total',
+      {label:'일룸', backgroundColor:'#ef4444', stack:'total',
        data:[2049.3,1938.4,1832.7,1541.8,null, 1855.5,1778.4,1940.2,1877.8,null, 1692.4,1664.3,1703.3,2004.7]},
-      {label:'슬로우베드', backgroundColor:'#948f80', stack:'total',
+      {label:'슬로우베드', backgroundColor:'#2563eb', stack:'total',
        data:[630.1,741.0,697.1,610.1,null, 750.7,721.6,655.7,639.1,null, 765.7,732.9,619.7,588.6]}
     ]
   },
@@ -349,28 +659,34 @@ new Chart(document.getElementById('brandStackChart'), {
   plugins:[monthGroupPlugin]
 });
 
-// SECTION2: supply charts
-new Chart(document.getElementById('supplyHeadcount'), {
+// SECTION2: 생산인원·근무시간, 공급실적·특근부담
+new Chart(document.getElementById('headcountHoursChart'), {
   data:{labels:['4월','5월','6월'],datasets:[
-    {type:'bar',label:'공급실적',data:[2399,2033,2758],backgroundColor:['#cdc9ba','#cdc9ba','#c23b2b'],yAxisID:'y',order:2},
-    {type:'line',label:'생산인원',data:[44,41,41],borderColor:'#2f6fa8',backgroundColor:'#2f6fa8',tension:.2,pointRadius:6,borderWidth:3,yAxisID:'y1',order:0}
+    {type:'bar',label:'순수시간',data:[14389,9158,11568],backgroundColor:'#93c5fd',borderRadius:4,order:2,yAxisID:'y'},
+    {type:'bar',label:'가중시간',data:[15588,12701,15176],backgroundColor:'#ef4444',borderRadius:4,order:2,yAxisID:'y'},
+    {type:'line',label:'생산인원',data:[44,41,41],borderColor:'#8b5cf6',backgroundColor:'#8b5cf6',tension:.2,pointRadius:6,borderWidth:3,order:0,yAxisID:'y1'}
   ]},
   options: baseOpts({
+    plugins:{legend:{display:false}},
     scales:{
-      y:{grid:{color:gridColor},ticks:{font:{size:12}},position:'left'},
-      y1:{grid:{display:false},ticks:{font:{size:12}},position:'right',min:35,max:48},
+      y:{grid:{color:gridColor},ticks:{font:{size:12}},position:'left',title:{display:true,text:'시간',font:{size:12}}},
+      y1:{grid:{display:false},ticks:{font:{size:12}},position:'right',min:35,max:48,title:{display:true,text:'생산인원(명)',font:{size:12}}},
       x:{grid:{display:false},ticks:{font:{size:13}}}
     }
   })
 });
-new Chart(document.getElementById('hoursChart'), {
-  type:'bar',
+new Chart(document.getElementById('supplyBurdenChart'), {
   data:{labels:['4월','5월','6월'],datasets:[
-    {label:'순수시간',data:[14389,9158,11568],backgroundColor:'#cdc9ba',borderRadius:4},
-    {label:'가중시간',data:[15588,12701,15176],backgroundColor:'#c23b2b',borderRadius:4}
+    {type:'bar',label:'공급실적',data:[2399,2033,2758],backgroundColor:['#f59e0b','#f59e0b','#f59e0b'],order:2,yAxisID:'y'},
+    {type:'line',label:'가중배율',data:[8.3,38.7,31.2],borderColor:'#ef4444',backgroundColor:'#ef4444',tension:.3,pointRadius:6,borderWidth:3,order:0,yAxisID:'y1'}
   ]},
   options: baseOpts({
-    plugins:{legend:{display:true,position:'top',labels:{boxWidth:12,font:{size:13}}}}
+    plugins:{legend:{display:false}},
+    scales:{
+      y:{grid:{color:gridColor},ticks:{font:{size:12}},position:'left',title:{display:true,text:'백만원',font:{size:12}}},
+      y1:{grid:{display:false},ticks:{font:{size:12},callback:v=>v+'%'},position:'right',min:0,max:45,title:{display:true,text:'가중배율',font:{size:12}}},
+      x:{grid:{display:false},ticks:{font:{size:13}}}
+    }
   })
 });
 
@@ -383,10 +699,10 @@ const top3Data = {
 let top3Chart = new Chart(document.getElementById('top3Chart'), {
   type:'line',
   data:{labels:['4월','5월','6월'],datasets:[
-    {label:'D-3m',data:top3Data.haven.d3,borderColor:'#cdc9ba',backgroundColor:'transparent',tension:.3,pointRadius:4,borderDash:[5,3],borderWidth:2},
-    {label:'D-2m',data:top3Data.haven.d2,borderColor:'#948f80',backgroundColor:'transparent',tension:.3,pointRadius:4,borderDash:[5,3],borderWidth:2},
-    {label:'D-1m',data:top3Data.haven.d1,borderColor:'#3f3d38',backgroundColor:'transparent',tension:.3,pointRadius:4,borderWidth:2},
-    {label:'실적',data:top3Data.haven.act,borderColor:'#c23b2b',backgroundColor:'transparent',tension:.3,pointRadius:5,borderWidth:3}
+    {label:'D-3m',data:top3Data.haven.d3,borderColor:'#93c5fd',backgroundColor:'transparent',tension:.3,pointRadius:4,borderDash:[5,3],borderWidth:2},
+    {label:'D-2m',data:top3Data.haven.d2,borderColor:'#3b82f6',backgroundColor:'transparent',tension:.3,pointRadius:4,borderDash:[5,3],borderWidth:2},
+    {label:'D-1m',data:top3Data.haven.d1,borderColor:'#1d4ed8',backgroundColor:'transparent',tension:.3,pointRadius:4,borderWidth:2},
+    {label:'실적',data:top3Data.haven.act,borderColor:'#ef4444',backgroundColor:'transparent',tension:.3,pointRadius:5,borderWidth:3}
   ]},
   options: baseOpts()
 });
