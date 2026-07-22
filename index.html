@@ -196,20 +196,21 @@
         </div>
       </div>
       <div class="chartbox" style="height:230px;"><canvas id="introComboTop"></canvas></div>
-      <div class="card-header" style="margin-top:16px;">
-        <div class="cardtitle">라인별 생산량 · 근무시간</div>
-        <div class="legend">
-          <span><span class="sw" style="background:#93c5fd"></span>생산량 (스프링/폼/모션)</span>
-          <span><span class="sw line" style="background:#c4b5fd"></span>순수시간</span>
-          <span><span class="sw line" style="background:#8b5cf6"></span>가중시간</span>
-        </div>
-      </div>
-      <div class="chartbox" style="height:190px; margin-top:2px;"><canvas id="introComboBottom"></canvas></div>
       <div class="month-annot">
         <div class="ma-item">쿠시노 프로모션 품의 승인(중순)<br>4월 말 S&amp;OP 공유</div>
         <div class="ma-item">쿠시노 수주 급증<br>(프로모션 5/1~25 → 연장)</div>
         <div class="ma-item">헤이븐·플렉서블 실적 예측 초과<br>쿠시노 SS 장납기(6/12~7/5)</div>
       </div>
+      <div class="card-header" style="margin-top:16px;">
+        <div class="cardtitle">라인별 생산량 · 근무시간</div>
+        <div class="legend">
+          <span><span class="sw" style="background:#93c5fd"></span>캐파 대비 (스프링/폼/모션)</span>
+          <span><span class="sw line" style="background:#4b5563"></span>캐파(100%)</span>
+          <span><span class="sw line" style="background:#c4b5fd"></span>순수시간</span>
+          <span><span class="sw line" style="background:#8b5cf6"></span>가중시간</span>
+        </div>
+      </div>
+      <div class="chartbox" style="height:190px; margin-top:2px;"><canvas id="introComboBottom"></canvas></div>
       <div class="chart-insight">
         <p><span class="arrow">▶</span>매출은 4월 과다예측(−9.1%) → 5월 오차범위 내 → 6월 과소예측(+12.5%)으로 3개월 내내 방향이 바뀌었습니다.</p>
         <p><span class="arrow">▶</span>재고회전율은 5월 1.81·6월 1.75로 4월(1.23) 대비 급등 — 스프링 재고 급감(1,447→1,018)이 주요 원인이며, 재고 확보 여력 축소를 동반해 좋은 신호로만 보기는 어렵습니다.</p>
@@ -351,8 +352,8 @@
       </div>
       <div class="chart-insight">
         <p><span class="arrow">▶</span>품목을 자주 바꿔가며 시간을 썼다면 산출이 늘 때 생산품목수(청록선)도 같이 늘어야 하는데, 스프링은 반대입니다 — 생산품목수는 4월 95개→6월 82개로 줄었는데 실제 산출(막대)은 203→233개로 늘었습니다. <b style="color:var(--ink)">더 적은 품목에 집중했는데도 산출은 캐파를 못 채웠다</b>는 뜻이라, 품목 전환 때문은 아닙니다. 모션만 유일하게 산출이 캐파를 채우거나 넘어섰습니다.</p>
-        <p><span class="arrow">▶</span>3개월 전체로 보면 세 라인 모두 5월에 생산품목수가 동시에 저점을 찍습니다(스프링 75개·폼 22개·모션 12개) — 같은 달 인원 최저(49.5명)·특근 최고(+38.7%)와 겹치는 걸 보면, 우연이 아니라 <b style="color:var(--ink)">인원 공백을 특근으로도 못 메우자 핵심 품목 위주로 방어 생산했다</b>는 하나의 원인이 만든 세 가지 증상으로 보입니다.</p>
-        <p><span class="arrow">▶</span>5월은 인원 공백이 방아쇠였다면, 6월은 다릅니다 — <b style="color:var(--ink)">인원도 늘고(49.5→52.5명) 특근 부담도 여전히 높았는데(가중배율 +31.2%, 4월 대비 3~4배)</b> 스프링·폼 모두 캐파를 채우지 못했습니다(233/250, 95/120). 위 공급실적·특근부담 차트에서 확인했듯 6월 채용은 물량 대응이 아니라 결원 충원·품질 개선 등 다른 목적이 섞여 있었던 만큼, 인원과 특근을 함께 투입하고도 산출이 못 따라온 데는 자재 부족, 불량 재작업, 설비 다운타임 등 다른 요인도 함께 작용했을 가능성이 있습니다.</p>
+        <p><span class="arrow">▶</span>3개월 전체로 보면 세 라인 모두 5월에 생산품목수가 동시에 저점을 찍습니다(스프링 75개·폼 22개·모션 12개) — 같은 달 인원 최저(49.5명)·특근 최고(+38.7%)와 겹치는 걸 보면, 우연이 아니라 <b style="color:var(--ink)">인원 공백을 특근으로도 못 메우자 핵심 품목 위주로 방어 생산했다</b>는 하나의 원인으로 수렴합니다.</p>
+        <p><span class="arrow">▶</span>5월은 인원 공백이 방아쇠였다면, 6월은 다릅니다 — <b style="color:var(--ink)">인원도 늘고(49.5→52.5명) 특근 부담도 여전히 높았는데(가중배율 +31.2%, 4월 대비 3~4배)</b> 스프링·폼 모두 캐파를 채우지 못했습니다(233/250, 95/120). 위 공급실적·특근부담 차트에서 확인했듯 6월 채용은 물량 대응이 아니라 결원 충원·품질 개선 등 다른 목적이 섞여 있었던 만큼, 인원과 특근을 함께 투입하고도 산출이 못 따라온 데는 숙련도 희석과 더불어 자재 부족, 불량 재작업, 설비 다운타임 등 다른 요인도 함께 작용했을 가능성이 있습니다.</p>
         <p><span class="arrow">▶</span>자재 요인은 <b style="color:var(--ink)">쿠시노 매트리스 장납기 이슈(6/12~7/5, D+10)</b>를 통해 실제로 확인되었습니다 — 5월 수주 급증에 대응하며 원단을 선제적으로 많이 소진했고, 그 여파로 6월엔 추가 수요에 대응할 원단을 긴급 수급하는 데 한계가 있었습니다. 초기 대응(B2B용 원단 사전 확보)은 유효했지만 5월 소진분을 메우는 속도가 6월 수요를 못 따라갔습니다. 여기에 공급처가 다른 별개 품목인 헤드보드·가드가 생산캐파 이슈로 먼저 장납기가 걸리며 매트리스 문제가 그 뒤에 가려져 있다가, 6월 원단 수급 차질로 매트리스 자체 장납기가 뒤늦게 표면화되는 시간차까지 겹쳤습니다.</p>
       </div>
     </div>
@@ -520,25 +521,53 @@ new Chart(document.getElementById('introComboTop'), {
   }),
   plugins:[alignedLinesPlugin]
 });
+const fullWidthLinePlugin = {
+  id: 'fullWidthLine',
+  afterDatasetsDraw(chart){
+    const {ctx, chartArea, scales} = chart;
+    const y = scales.y.getPixelForValue(100);
+    ctx.save();
+    ctx.strokeStyle = '#4b5563';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4,4]);
+    ctx.beginPath();
+    ctx.moveTo(chartArea.left, y);
+    ctx.lineTo(chartArea.right, y);
+    ctx.stroke();
+    ctx.restore();
+  }
+};
 new Chart(document.getElementById('introComboBottom'), {
   data:{
     labels:['4월','5월','6월'],
     datasets:[
-      {type:'bar', label:'생산량-스프링', data:[203,211,233], backgroundColor:'#93c5fd', borderRadius:2, order:2, yAxisID:'y'},
-      {type:'bar', label:'생산량-폼', data:[78,93,95], backgroundColor:'#93c5fd', borderRadius:2, order:2, yAxisID:'y'},
-      {type:'bar', label:'생산량-모션', data:[8,8,9], backgroundColor:'#93c5fd', borderRadius:2, order:2, yAxisID:'y'},
+      {type:'bar', label:'스프링(캐파비)', data:[81.2,84.4,93.2], rawQty:[203,211,233], backgroundColor:'#93c5fd', borderRadius:2, order:2, yAxisID:'y'},
+      {type:'bar', label:'폼(캐파비)', data:[65.0,77.5,79.2], rawQty:[78,93,95], backgroundColor:'#93c5fd', borderRadius:2, order:2, yAxisID:'y'},
+      {type:'bar', label:'모션(캐파비)', data:[100.0,100.0,112.5], rawQty:[8,8,9], backgroundColor:'#93c5fd', borderRadius:2, order:2, yAxisID:'y'},
       {type:'line', label:'순수시간', data:[14389,9158,11568], borderColor:'#c4b5fd', backgroundColor:'#c4b5fd', tension:.3, pointRadius:6, borderWidth:2.5, order:0, yAxisID:'y1'},
       {type:'line', label:'가중시간', data:[15588,12701,15176], borderColor:'#8b5cf6', backgroundColor:'#8b5cf6', tension:.3, pointRadius:6, borderWidth:2.5, order:0, yAxisID:'y1'}
     ]
   },
   options: baseOpts({
-    plugins:{legend:{display:false}},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        callbacks:{
+          label:(ctx) => {
+            const raw = ctx.dataset.rawQty;
+            if(raw) return `${raw[ctx.dataIndex]}개 (${ctx.parsed.y}%)`;
+            return `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`;
+          }
+        }
+      }
+    },
     scales:{
-      y:{grid:{color:gridColor}, ticks:{font:{size:12}}, position:'left', title:{display:true,text:'개/일',font:{size:11}}, afterFit:(s)=>{s.width=60;}},
+      y:{grid:{color:gridColor}, ticks:{font:{size:12},callback:v=>v+'%'}, position:'left', min:0, max:130, title:{display:true,text:'캐파 대비',font:{size:11}}, afterFit:(s)=>{s.width=60;}},
       y1:{grid:{display:false}, ticks:{font:{size:12}}, position:'right', title:{display:true,text:'시간',font:{size:11}}, afterFit:(s)=>{s.width=55;}},
       x:{grid:{display:false}, ticks:{font:{size:13}}}
     }
-  })
+  }),
+  plugins:[fullWidthLinePlugin]
 });
 
 // SECTION2: 특근이 산출로 이어졌는가 - 실제산출(막대) + 생산품목수(선)
