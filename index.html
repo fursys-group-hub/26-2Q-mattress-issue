@@ -71,7 +71,7 @@
   .callout{background:var(--card); border:none; box-shadow:0 2px 10px rgba(30,30,20,.05); border-left:4px solid var(--accent2); border-radius:12px; padding:16px 20px; font-size:15px; color:var(--sub); margin-top:18px;}
   .callout b{color:var(--ink);}
   .callout.warn{border-left-color:var(--danger);}
-  .callout.point{border-left-color:var(--orange); background:#fef3e2;}
+  .callout.point{border-left-color:var(--orange); background:#fef3e2; font-weight:700;}
   .callout.point .label{font-size:12px; font-weight:700; color:#b45309; letter-spacing:.04em; margin-bottom:6px; text-transform:uppercase;}
   ul.bullets{margin:0; padding-left:20px;}
   ul.bullets li{margin-bottom:8px; font-size:15px;}
@@ -234,7 +234,7 @@
     <div class="secline"></div>
     <p class="lede">브랜드별 예측 정확도와 공급 병목 구간을 나눠서 확인하고, 각 파트가 개선해야 할 포인트를 짚습니다.</p>
 
-    <h3 style="margin-top:8px;">매출 — 브랜드별 예측 시점 vs 실적</h3>
+    <h3 style="margin-top:8px;">1) 매출 — 예측 정확도 검증</h3>
     <div class="card" style="margin-top:16px;">
       <div class="card-header">
         <div class="cardtitle">일룸 · 슬로우베드 — 예측 시점별 vs 실적 (누적)</div>
@@ -277,7 +277,7 @@
       헤이븐·플렉서블·쿠시노 모두 프로모션 등 이벤트성 수요가 예측에 정교하게 반영되지 못한 공통 패턴입니다. 초기 예측(D-3m) 단계부터 이벤트성 수요를 반영할 수 있는 프로세스 정비가 필요합니다.
     </div>
 
-    <h3 style="margin-top:44px;">공급 — 병목 구간 파악</h3>
+    <h3 style="margin-top:44px;">2) 공급 — 병목 구간 파악</h3>
 
     <p class="lede" style="margin-top:2px; max-width:none;">생산인원은 <b style="color:var(--ink)">생산에 투입된 직접인원(정규직·비정규직 포함) 전체</b> 기준입니다.</p>
     <div class="grid2" style="margin-top:16px;">
@@ -329,9 +329,9 @@
       </table>
     </details>
 
-    <h3 style="margin-top:36px;">라인별 수량 — 특근이 산출로 이어졌는가</h3>
-    <p class="lede" style="margin-top:2px; max-width:none;">특근 부담은 바로 위 차트에서 이미 확인했으니, 여기서는 실제 산출량과 <b style="color:var(--ink)">생산품목수(SKU 다양성)</b>를 같이 봐서 "품목을 자주 바꾸느라 산출이 늘지 않았다"는 가설을 검증합니다.</p>
-    <div class="card">
+    <div class="card" style="margin-top:36px;">
+      <div class="cardtitle">라인별 수량 — 특근이 산출로 이어졌는가</div>
+      <p class="lede" style="margin-top:0; margin-bottom:16px; max-width:none;">특근 부담은 바로 위 차트에서 이미 확인했으니, 여기서는 실제 산출량과 <b style="color:var(--ink)">생산품목수(SKU 다양성)</b>를 같이 봐서 "품목을 자주 바꾸느라 산출이 늘지 않았다"는 가설을 검증합니다.</p>
       <div class="grid3">
         <div>
           <div class="seriesname">스프링 (캐파 250/일)</div>
